@@ -1,7 +1,7 @@
 app-id: com.github.avojak.warble
 
 runtime: org.gnome.Platform
-runtime-version: '42'
+runtime-version: '45'
 sdk: org.gnome.Sdk
 
 command: com.github.avojak.warble
@@ -48,7 +48,7 @@ modules:
                 dest-filename: autogen.sh
                 commands:
                   - autoreconf -si
-          
+
   - name: elementary-icons
     buildsystem: meson
     config-opts:
