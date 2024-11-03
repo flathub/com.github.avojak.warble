@@ -1,0 +1,47 @@
+From 40c57db858eecd17f276d41d9f4eaedc491fb9d1 Mon Sep 17 00:00:00 2001
+From: Dan Fandrich <dan@coneharvesters.com>
+Date: Mon, 4 Nov 2024 07:39:15 -0800
+Subject: [PATCH] Install the SVG icon in the correct location
+
+---
+ data/meson.build | 22 ++++++----------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index 99ed90b..ea8abbc 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -1,18 +1,8 @@
+-icon_sizes = ['24', '32', '48', '64', '128']
+-
+-# Install the icons
+-foreach i : icon_sizes
+-    install_data(
+-        join_paths('assets', 'icons', i + 'x' + i, meson.project_name() + '.svg'),
+-        install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps'),
+-        rename: '@0@.svg'.format(application_id)
+-    )
+-    install_data(
+-        join_paths('assets', 'icons', i + 'x' + i, meson.project_name() + '.svg'),
+-        install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i + '@2', 'apps'),
+-        rename: '@0@.svg'.format(application_id)
+-    )
+-endforeach
++install_data(
++    join_paths('assets', 'icons', '128x128', meson.project_name() + '.svg'),
++    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'apps'),
++    rename: '@0@.svg'.format(application_id)
++)
+ 
+ # Install the dictionary and candidate words files
+ install_data(
+@@ -79,4 +69,4 @@ css_gresource = gnome.compile_resources(
+     'gresource_css',
+     meson.project_name() + '.gresource.xml',
+     source_dir: 'stylesheet'
+-)
+\ No newline at end of file
++)
+-- 
+2.41.1
+
